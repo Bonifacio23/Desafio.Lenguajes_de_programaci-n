@@ -43,12 +43,13 @@ La aplicación permite registrar, buscar, listar y eliminar pacientes, además d
 2. Abrir el proyecto en **Eclipse IDE** (File → Open Projects from File System).
 3. Ejecutar la clase `V1.java` (contiene el método `main`).
 
-## Autores
+## Integrantes
 
-**Félix Jesús Bonifacio Cotrina** — Estudiante de Ingeniería de Sistemas, Universidad Privada del Norte.
-**Jeremy Miguel Pacheco Aparco** — Estudiante de Ingeniería de Sistemas, Universidad Privada del Norte.
-**Sergio Joaquin Marcoz Otarola** — Estudiante de Ingeniería de Sistemas, Universidad Privada del Norte.
-**Gustavo Vladimir Nolazco Quisuruco** — Estudiante de Ingeniería de Sistemas, Universidad Privada del Norte.
+- **Félix Jesús Bonifacio Cotrina** — Estudiante de Ingeniería de Sistemas, Universidad Privada del Norte.
+- **Jeremy Miguel Pacheco Aparco** — Estudiante de Ingeniería de Sistemas, Universidad Privada del Norte.
+- **Sergio Joaquin Marcoz Otarola** — Estudiante de Ingeniería de Sistemas, Universidad Privada del Norte.
+- **Gustavo Vladimir Nolazco Quisuruco** — Estudiante de Ingeniería de Sistemas, Universidad Privada del Norte.
+
 ## Curso
 
 Lenguajes de Programación
