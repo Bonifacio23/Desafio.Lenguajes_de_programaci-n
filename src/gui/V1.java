@@ -460,8 +460,4 @@ public class V1 extends JFrame implements ActionListener {
 		
 		
 	}
-	protected void do_mntmNewMenuItem_actionPerformed(ActionEvent e) {
-		
-		
-	}
 }
