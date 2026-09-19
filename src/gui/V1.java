@@ -299,9 +299,9 @@ public class V1 extends JFrame implements ActionListener {
 	private JMenu mnNewMenu;
 	private JMenu mnNewMenu_1;
 	private JMenu mnNewMenu_2;
-	private JMenuItem mntmNewMenuItem;
 	private JMenuItem mntmNewMenuItem_1;
 	private JMenuItem mntmNewMenuItem_3;
+	private JMenuItem mntmNewMenuItem;
 	protected void do_btnNewButton_actionPerformed(ActionEvent e) {
 		txtS.setText("");
 		Listado();
@@ -459,5 +459,7 @@ public class V1 extends JFrame implements ActionListener {
 		
 		
 		
+	}
+	protected void do_mntmNewMenuItem_actionPerformed(ActionEvent e) {
 	}
 }

@@ -7,11 +7,13 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
 
 public class Programadores extends JDialog {
 
 	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
+	private JLabel lblNewLabel;
 
 	/**
 	 * Launch the application.
@@ -32,9 +34,14 @@ public class Programadores extends JDialog {
 	public Programadores() {
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
-		contentPanel.setLayout(new FlowLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
+		contentPanel.setLayout(null);
+		{
+			lblNewLabel = new JLabel("");
+			lblNewLabel.setBounds(10, 26, 373, 174);
+			contentPanel.add(lblNewLabel);
+		}
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
@@ -52,5 +59,4 @@ public class Programadores extends JDialog {
 			}
 		}
 	}
-
 }
