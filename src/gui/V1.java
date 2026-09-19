@@ -1,19 +1,25 @@
 package gui;
 
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
+import java.util.HashMap;
+import java.util.Map;
+import java.awt.GridLayout;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.JFrame;
 import javax.swing.border.EmptyBorder;
 
 import Clases.Arreglopacientes;
 import Clases.Pacientes;
 
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import java.awt.Font;
-import javax.swing.JTextField;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.security.auth.callback.TextOutputCallback;
@@ -21,7 +27,10 @@ import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-
+import javax.swing.JPasswordField;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
 public class V1 extends JFrame implements ActionListener {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -48,24 +57,81 @@ public class V1 extends JFrame implements ActionListener {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					V1 frame = new V1();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+	    Map<String, String> usuarios = new HashMap<>();
+	    usuarios.put("FelixBC", "Felix200@");
+	    usuarios.put("JeremyPA", "Jeremy300@");
+	    usuarios.put("SergioMO", "Sergio400@");
+	    usuarios.put("GustavoNQ", "Gustavo500@");
+
+	    JTextField txtUsuario = new JTextField();
+	    JPasswordField txtContraseña = new JPasswordField();
+
+	    JPanel panel = new JPanel(new GridLayout(2, 2, 5, 5));
+	    panel.add(new JLabel("Usuario:"));
+	    panel.add(txtUsuario);
+	    panel.add(new JLabel("Contraseña:"));
+	    panel.add(txtContraseña);
+
+	    int okCancel = JOptionPane.showConfirmDialog(null, panel, "Iniciar sesión",
+	            JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+
+	    if (okCancel != JOptionPane.OK_OPTION) return;
+
+	    String usuario = txtUsuario.getText();
+	    String contraseña = new String(txtContraseña.getPassword());
+
+	    if (usuarios.containsKey(usuario) && usuarios.get(usuario).equals(contraseña)) {
+	        EventQueue.invokeLater(new Runnable() {
+	            public void run() {
+	                try {
+	                    V1 frame = new V1();
+	                    frame.setVisible(true);
+	                } catch (Exception e) {
+	                    e.printStackTrace();
+	                }
+	            }
+	        });
+	    } else {
+	        JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos");
+	    }
 	}
 
 	/**
 	 * Create the frame.
 	 */
 	public V1() {
+		setTitle("Sistema de registro de citas");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 732, 477);
+		{
+			menuBar = new JMenuBar();
+			setJMenuBar(menuBar);
+			{
+				mnNewMenu = new JMenu("Desarrolladores");
+				menuBar.add(mnNewMenu);
+				{
+					mntmNewMenuItem = new JMenuItem("Programadores");
+					mntmNewMenuItem.addActionListener(this);
+					mnNewMenu.add(mntmNewMenuItem);
+				}
+			}
+			{
+				mnNewMenu_1 = new JMenu("New menu");
+				menuBar.add(mnNewMenu_1);
+				{
+					mntmNewMenuItem_1 = new JMenuItem("New menu item");
+					mnNewMenu_1.add(mntmNewMenuItem_1);
+				}
+			}
+			{
+				mnNewMenu_2 = new JMenu("New menu");
+				menuBar.add(mnNewMenu_2);
+				{
+					mntmNewMenuItem_3 = new JMenuItem("New menu item");
+					mnNewMenu_2.add(mntmNewMenuItem_3);
+				}
+			}
+		}
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -172,7 +238,7 @@ public class V1 extends JFrame implements ActionListener {
 		{
 			btnReportar = new JButton("Reportar");
 			btnReportar.addActionListener(this);
-			btnReportar.setBackground(Color.YELLOW);
+			btnReportar.setBackground(new Color(255, 255, 255));
 			btnReportar.setForeground(Color.BLACK);
 			btnReportar.setFont(new Font("Tahoma", Font.BOLD, 13));
 			btnReportar.setBounds(39, 209, 99, 23);
@@ -183,7 +249,7 @@ public class V1 extends JFrame implements ActionListener {
 			btnAñadir.addActionListener(this);
 			btnAñadir.setForeground(Color.BLACK);
 			btnAñadir.setFont(new Font("Tahoma", Font.BOLD, 13));
-			btnAñadir.setBackground(Color.GREEN);
+			btnAñadir.setBackground(new Color(255, 255, 255));
 			btnAñadir.setBounds(222, 209, 99, 23);
 			contentPane.add(btnAñadir);
 		}
@@ -192,7 +258,7 @@ public class V1 extends JFrame implements ActionListener {
 			btnBuscar.addActionListener(this);
 			btnBuscar.setForeground(Color.BLACK);
 			btnBuscar.setFont(new Font("Tahoma", Font.BOLD, 13));
-			btnBuscar.setBackground(Color.CYAN);
+			btnBuscar.setBackground(new Color(255, 255, 255));
 			btnBuscar.setBounds(399, 209, 99, 23);
 			contentPane.add(btnBuscar);
 		}
@@ -201,7 +267,7 @@ public class V1 extends JFrame implements ActionListener {
 			btnEliminar.addActionListener(this);
 			btnEliminar.setForeground(Color.BLACK);
 			btnEliminar.setFont(new Font("Tahoma", Font.BOLD, 13));
-			btnEliminar.setBackground(Color.RED);
+			btnEliminar.setBackground(new Color(255, 255, 255));
 			btnEliminar.setBounds(577, 209, 99, 23);
 			contentPane.add(btnEliminar);
 		}
@@ -209,6 +275,9 @@ public class V1 extends JFrame implements ActionListener {
 		
 	}
 	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == mntmNewMenuItem) {
+			do_mntmNewMenuItem_actionPerformed(e);
+		}
 		if (e.getSource() == btnEliminar) {
 			do_btnEliminar_actionPerformed(e);
 		}
@@ -226,6 +295,13 @@ public class V1 extends JFrame implements ActionListener {
 	private JButton btnAñadir;
 	private JButton btnBuscar;
 	private JButton btnEliminar;
+	private JMenuBar menuBar;
+	private JMenu mnNewMenu;
+	private JMenu mnNewMenu_1;
+	private JMenu mnNewMenu_2;
+	private JMenuItem mntmNewMenuItem;
+	private JMenuItem mntmNewMenuItem_1;
+	private JMenuItem mntmNewMenuItem_3;
 	protected void do_btnNewButton_actionPerformed(ActionEvent e) {
 		txtS.setText("");
 		Listado();
@@ -295,7 +371,7 @@ public class V1 extends JFrame implements ActionListener {
 		}
 		double pago = Double.parseDouble(pagoTexto);
 		
-		Pacientes pac= new Pacientes(nomb, caso, edad, dni, hora, dia, pago);
+		Pacientes pac = new Pacientes(nomb, edad, dni, caso, dia, hora, pago);
 		
 		aps.Adicionar(pac);
 		Listado();
@@ -384,12 +460,8 @@ public class V1 extends JFrame implements ActionListener {
 		
 		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
+	protected void do_mntmNewMenuItem_actionPerformed(ActionEvent e) {
+		
+		
+	}
 }

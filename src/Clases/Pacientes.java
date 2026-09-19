@@ -1,50 +1,15 @@
 package Clases;
 
-public class Pacientes {
+public class Pacientes extends Persona{
 	
-	private String nombre,caso, día, hora;
-	private int edad, dni;
+	private String caso, día, hora;
 	private double pago;
-	
-	public Pacientes(String nombre, String caso, int edad, int dni, String hora, String día, double pago) {
-		this.nombre = nombre;
+	public Pacientes(String nomb, int edad, int dni, String caso, String día, String hora, double pago) {
+		super(nomb, edad, dni);
 		this.caso = caso;
-		this.edad = edad;
-		this.dni = dni;
-		this.hora = hora;
 		this.día = día;
+		this.hora = hora;
 		this.pago = pago;
-	}
-	
-	public String getNombre() {
-		return nombre;
-	}
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-	public int getEdad() {
-		return edad;
-	}
-	public void setEdad(int edad) {
-		this.edad = edad;
-	}
-	public int getDni() {
-		return dni;
-	}
-	public void setDni(int dni) {
-		this.dni = dni;
-	}
-	public String getHora() {
-		return hora;
-	}
-	public void setHora(String hora) {
-		this.hora = hora;
-	}
-	public String getDía() {
-		return día;
-	}
-	public void setDía(String día) {
-		this.día = día;
 	}
 	public String getCaso() {
 		return caso;
@@ -52,20 +17,27 @@ public class Pacientes {
 	public void setCaso(String caso) {
 		this.caso = caso;
 	}
-
+	public String getDía() {
+		return día;
+	}
+	public void setDía(String día) {
+		this.día = día;
+	}
+	public String getHora() {
+		return hora;
+	}
+	public void setHora(String hora) {
+		this.hora = hora;
+	}
 	public double getPago() {
 		return pago;
 	}
-
 	public void setPago(double pago) {
 		this.pago = pago;
 	}
-	
-	
-	
-	
 
 
+	
 
-
+	
 }
