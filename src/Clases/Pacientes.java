@@ -4,8 +4,8 @@ public class Pacientes extends Persona{
 	
 	private String caso, día, hora;
 	private double pago;
-	public Pacientes(String nomb, int edad, int dni, String caso, String día, String hora, double pago) {
-		super(nomb, edad, dni);
+	public Pacientes(String nomb, String apell, int edad, int dni, String caso, String día, String hora, double pago) {
+		super(nomb, apell, edad, dni);
 		this.caso = caso;
 		this.día = día;
 		this.hora = hora;

@@ -1,10 +1,11 @@
 package Clases;
 
 public class Persona {
-	private String nomb;
+	private String nomb,apell;
 	private int edad, dni;
-	public Persona(String nomb, int edad, int dni) {
+	public Persona(String nomb, String apell, int edad, int dni) {
 		this.nomb = nomb;
+		this.apell = apell;
 		this.edad = edad;
 		this.dni = dni;
 	}
@@ -13,6 +14,12 @@ public class Persona {
 	}
 	public void setNombre(String nomb) {
 		this.nomb = nomb;
+	}
+	public String getApell() {
+		return apell;
+	}
+	public void setApell(String apell) {
+		this.apell = apell;
 	}
 	public int getEdad() {
 		return edad;

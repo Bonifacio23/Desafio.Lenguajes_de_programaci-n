@@ -31,6 +31,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JComboBox;
 public class V1 extends JFrame implements ActionListener {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -102,7 +103,7 @@ public class V1 extends JFrame implements ActionListener {
 	public V1() {
 		setTitle("Sistema de registro de citas");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 732, 477);
+		setBounds(100, 100, 1193, 575);
 		{
 			menuBar = new JMenuBar();
 			setJMenuBar(menuBar);
@@ -116,19 +117,22 @@ public class V1 extends JFrame implements ActionListener {
 				}
 			}
 			{
-				mnNewMenu_1 = new JMenu("New menu");
+				mnNewMenu_1 = new JMenu("Consultorio");
 				menuBar.add(mnNewMenu_1);
 				{
-					mntmNewMenuItem_1 = new JMenuItem("New menu item");
+					mntmNewMenuItem_1 = new JMenuItem("Piso 1");
+					mntmNewMenuItem_1.addActionListener(this);
 					mnNewMenu_1.add(mntmNewMenuItem_1);
 				}
-			}
-			{
-				mnNewMenu_2 = new JMenu("New menu");
-				menuBar.add(mnNewMenu_2);
 				{
-					mntmNewMenuItem_3 = new JMenuItem("New menu item");
-					mnNewMenu_2.add(mntmNewMenuItem_3);
+					mntmNewMenuItem_2 = new JMenuItem("Piso 2");
+					mntmNewMenuItem_2.addActionListener(this);
+					mnNewMenu_1.add(mntmNewMenuItem_2);
+				}
+				{
+					mntmNewMenuItem_4 = new JMenuItem("Piso 3");
+					mntmNewMenuItem_4.addActionListener(this);
+					mnNewMenu_1.add(mntmNewMenuItem_4);
 				}
 			}
 		}
@@ -139,99 +143,100 @@ public class V1 extends JFrame implements ActionListener {
 		{
 			lblNewLabel = new JLabel("CENTRO DE SALUD  “BREÑA”");
 			lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 27));
-			lblNewLabel.setBounds(159, 0, 403, 64);
+			lblNewLabel.setBounds(414, 3, 403, 64);
 			contentPane.add(lblNewLabel);
 		}
 		{
-			lblNombre = new JLabel("Nombre: ");
+			lblNombre = new JLabel("Nombres: ");
 			lblNombre.setFont(new Font("Verdana", Font.BOLD, 14));
-			lblNombre.setBounds(27, 79, 74, 14);
+			lblNombre.setBounds(808, 75, 90, 14);
 			contentPane.add(lblNombre);
 		}
 		{
 			lblNombre_2 = new JLabel("Caso: ");
 			lblNombre_2.setFont(new Font("Verdana", Font.BOLD, 14));
-			lblNombre_2.setBounds(252, 79, 82, 14);
+			lblNombre_2.setBounds(454, 131, 82, 14);
 			contentPane.add(lblNombre_2);
 		}
 		{
 			lblEdad = new JLabel("Edad: ");
 			lblEdad.setFont(new Font("Verdana", Font.BOLD, 14));
-			lblEdad.setBounds(468, 79, 82, 14);
+			lblEdad.setBounds(172, 131, 82, 14);
 			contentPane.add(lblEdad);
 		}
 		{
 			lblHora = new JLabel("Hora:");
 			lblHora.setFont(new Font("Verdana", Font.BOLD, 14));
-			lblHora.setBounds(468, 124, 82, 14);
+			lblHora.setBounds(172, 174, 82, 14);
 			contentPane.add(lblHora);
 		}
 		{
 			lblDni_1 = new JLabel("DNI:");
 			lblDni_1.setFont(new Font("Verdana", Font.BOLD, 14));
-			lblDni_1.setBounds(39, 124, 45, 14);
+			lblDni_1.setBounds(169, 78, 45, 14);
 			contentPane.add(lblDni_1);
 		}
 		{
 			lblDia = new JLabel("Día:");
 			lblDia.setFont(new Font("Verdana", Font.BOLD, 14));
-			lblDia.setBounds(252, 124, 82, 14);
+			lblDia.setBounds(850, 128, 82, 14);
 			contentPane.add(lblDia);
 		}
 		{
 			lblPago = new JLabel("Pago:");
 			lblPago.setFont(new Font("Verdana", Font.BOLD, 14));
-			lblPago.setBounds(37, 166, 51, 18);
+			lblPago.setBounds(454, 172, 51, 18);
 			contentPane.add(lblPago);
 		}
 		{
 			txtNomb = new JTextField();
-			txtNomb.setBounds(102, 79, 140, 20);
+			txtNomb.setBounds(896, 75, 192, 20);
 			contentPane.add(txtNomb);
 			txtNomb.setColumns(10);
 		}
 		{
 			txtCaso = new JTextField();
-			txtCaso.setBounds(297, 78, 161, 20);
+			txtCaso.setBounds(506, 126, 256, 20);
 			contentPane.add(txtCaso);
 			txtCaso.setColumns(10);
 		}
 		{
 			txtEdad = new JTextField();
-			txtEdad.setBounds(523, 75, 86, 20);
+			txtEdad.setBounds(227, 127, 125, 20);
 			contentPane.add(txtEdad);
 			txtEdad.setColumns(10);
 		}
 		{
 			txtDni = new JTextField();
 			txtDni.setColumns(10);
-			txtDni.setBounds(101, 124, 141, 20);
+			txtDni.setBounds(211, 75, 141, 20);
 			contentPane.add(txtDni);
 		}
 		{
 			txtDía = new JTextField();
-			txtDía.setBounds(297, 123, 161, 20);
+			txtDía.setBounds(896, 127, 192, 18);
 			contentPane.add(txtDía);
 			txtDía.setColumns(10);
 		}
 		{
 			txtHora = new JTextField();
-			txtHora.setBounds(523, 123, 86, 20);
+			txtHora.setBounds(227, 173, 125, 20);
 			contentPane.add(txtHora);
 			txtHora.setColumns(10);
 		}
 		{
 			txtPago = new JTextField();
-			txtPago.setBounds(102, 168, 112, 20);
+			txtPago.setBounds(506, 173, 112, 20);
 			contentPane.add(txtPago);
 			txtPago.setColumns(10);
 		}
 		{
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(27, 256, 668, 171);
+			scrollPane.setBounds(27, 256, 1126, 247);
 			contentPane.add(scrollPane);
 			{
 				txtS = new JTextArea();
+				txtS.setFont(new Font("Monospaced", Font.PLAIN, 12));
 				scrollPane.setViewportView(txtS);
 			}
 		}
@@ -241,7 +246,7 @@ public class V1 extends JFrame implements ActionListener {
 			btnReportar.setBackground(new Color(255, 255, 255));
 			btnReportar.setForeground(Color.BLACK);
 			btnReportar.setFont(new Font("Tahoma", Font.BOLD, 13));
-			btnReportar.setBounds(39, 209, 99, 23);
+			btnReportar.setBounds(142, 211, 99, 23);
 			contentPane.add(btnReportar);
 		}
 		{
@@ -250,7 +255,7 @@ public class V1 extends JFrame implements ActionListener {
 			btnAñadir.setForeground(Color.BLACK);
 			btnAñadir.setFont(new Font("Tahoma", Font.BOLD, 13));
 			btnAñadir.setBackground(new Color(255, 255, 255));
-			btnAñadir.setBounds(222, 209, 99, 23);
+			btnAñadir.setBounds(325, 211, 99, 23);
 			contentPane.add(btnAñadir);
 		}
 		{
@@ -259,7 +264,7 @@ public class V1 extends JFrame implements ActionListener {
 			btnBuscar.setForeground(Color.BLACK);
 			btnBuscar.setFont(new Font("Tahoma", Font.BOLD, 13));
 			btnBuscar.setBackground(new Color(255, 255, 255));
-			btnBuscar.setBounds(399, 209, 99, 23);
+			btnBuscar.setBounds(502, 211, 99, 23);
 			contentPane.add(btnBuscar);
 		}
 		{
@@ -268,13 +273,34 @@ public class V1 extends JFrame implements ActionListener {
 			btnEliminar.setForeground(Color.BLACK);
 			btnEliminar.setFont(new Font("Tahoma", Font.BOLD, 13));
 			btnEliminar.setBackground(new Color(255, 255, 255));
-			btnEliminar.setBounds(577, 209, 99, 23);
+			btnEliminar.setBounds(680, 211, 99, 23);
 			contentPane.add(btnEliminar);
+		}
+		{
+			lblApellidos = new JLabel("Apellidos:");
+			lblApellidos.setFont(new Font("Verdana", Font.BOLD, 14));
+			lblApellidos.setBounds(424, 78, 91, 17);
+			contentPane.add(lblApellidos);
+		}
+		{
+			txtApell = new JTextField();
+			txtApell.setColumns(10);
+			txtApell.setBounds(503, 75, 259, 20);
+			contentPane.add(txtApell);
 		}
          Listado();
 		
 	}
 	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == mntmNewMenuItem_4) {
+			do_mntmNewMenuItem_4_actionPerformed(e);
+		}
+		if (e.getSource() == mntmNewMenuItem_2) {
+			do_mntmNewMenuItem_2_actionPerformed(e);
+		}
+		if (e.getSource() == mntmNewMenuItem_1) {
+			do_mntmNewMenuItem_1_actionPerformed(e);
+		}
 		if (e.getSource() == mntmNewMenuItem) {
 			do_mntmNewMenuItem_actionPerformed(e);
 		}
@@ -298,10 +324,12 @@ public class V1 extends JFrame implements ActionListener {
 	private JMenuBar menuBar;
 	private JMenu mnNewMenu;
 	private JMenu mnNewMenu_1;
-	private JMenu mnNewMenu_2;
 	private JMenuItem mntmNewMenuItem_1;
-	private JMenuItem mntmNewMenuItem_3;
 	private JMenuItem mntmNewMenuItem;
+	private JLabel lblApellidos;
+	private JTextField txtApell;
+	private JMenuItem mntmNewMenuItem_2;
+	private JMenuItem mntmNewMenuItem_4;
 	protected void do_btnNewButton_actionPerformed(ActionEvent e) {
 		txtS.setText("");
 		Listado();
@@ -329,22 +357,45 @@ public class V1 extends JFrame implements ActionListener {
 		}
 
 		String nomb = txtNomb.getText().trim();
-		if (!nomb.isEmpty()) {
-		    nomb = nomb.substring(0, 1).toUpperCase() + nomb.substring(1).toLowerCase();
+		if (nomb.isEmpty()) {
+		    JOptionPane.showMessageDialog(this, "El nombre no puede estar vacío.");
+		    return;
 		}
+		if (!nomb.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")) {
+		    JOptionPane.showMessageDialog(this, "El nombre solo debe contener letras.");
+		    return;
+		}
+		nomb = nomb.substring(0, 1).toUpperCase() + nomb.substring(1).toLowerCase();
+		
+		String apell = txtApell.getText().trim();
+		if (apell.isEmpty()) {
+			JOptionPane.showMessageDialog(this, "El apellido no puede estar vacío.");
+		    return;
+		}
+		if (!apell.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")) {
+		    JOptionPane.showMessageDialog(this, "El apellido solo debe contener letras.");
+		    return;
+		}
+		apell = apell.substring(0, 1).toUpperCase() + apell.substring(1).toLowerCase();
+		
 		String caso = txtCaso.getText().trim();
-		if (!caso.isEmpty()) {
-		    caso = caso.substring(0, 1).toUpperCase() + caso.substring(1).toLowerCase();
+		if (caso.isEmpty()) {
+			JOptionPane.showMessageDialog(this, "El caso no puede estar vacío.");
+		    return;
 		}
+		if (!caso.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")) {
+		    JOptionPane.showMessageDialog(this, "El caso solo debe contener letras.");
+		    return;
+		}
+		caso = caso.substring(0, 1).toUpperCase() + caso.substring(1).toLowerCase();
+		
 		String edadTexto = txtEdad.getText().trim();
-
 		if (!edadTexto.matches("\\d{1,3}")) {
 		    JOptionPane.showMessageDialog(this, "La edad debe ser un número válido.");
 		    return;
 		}
 
 		int edad = Integer.parseInt(edadTexto);
-
 		if (edad < 0 || edad > 120) {
 		    JOptionPane.showMessageDialog(this, "La edad debe estar entre 0 y 120 años.");
 		    return;
@@ -371,12 +422,14 @@ public class V1 extends JFrame implements ActionListener {
 		}
 		double pago = Double.parseDouble(pagoTexto);
 		
-		Pacientes pac = new Pacientes(nomb, edad, dni, caso, dia, hora, pago);
+		
+		Pacientes pac = new Pacientes(nomb, apell, edad, dni, caso, dia, hora, pago);
 		
 		aps.Adicionar(pac);
 		Listado();
 		
 		txtNomb.setText("");
+		txtApell.setText("");
 		txtCaso.setText("");
 		txtEdad.setText("");
 		txtDni.setText("");
@@ -390,13 +443,14 @@ public class V1 extends JFrame implements ActionListener {
 	
 	void Listado() {
 		txtS.setText("");
-		Imprimir("================================================================================================");
-		Imprimir("N°\tNombre\tCaso\tEdad\tDNI\tDía\tHora\tPago");
-		Imprimir("-----------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+		Imprimir("================================================================================================================================================================================");
+		Imprimir(String.format("%-5s %-30s %-30s %-42s %-6s %-12s %-12s %-8s %-8s","N°","Nombres","Apellidos","Caso","Edad","DNI","Día","Hora","Pago"));
+		Imprimir("--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
 		for (int i =0;i<aps.Tamaño();i++) {
 			Pacientes x=aps.Obtener(i);
 			String orden=aps.Registro(i);
-			Imprimir(orden+"\t"+x.getNombre()+"\t"+x.getCaso()+"\t"+x.getEdad()+"\t"+x.getDni()+"\t"+x.getDía()+"\t"+x.getHora()+"\tS/"+ x.getPago());
+			Imprimir(String.format("%-5s %-30s %-30s %-42s %-6d %-12d %-12s %-8s S/%.2f", orden, x.getNombre(),x.getApell(), x.getCaso(), x.getEdad(), x.getDni(), x.getDía(), x.getHora(), x.getPago()));
+			
 		}
 	}
 
@@ -420,7 +474,8 @@ public class V1 extends JFrame implements ActionListener {
 			txtS.setText("");
 			Imprimir("================================================================================================");
 			Imprimir("\t <-DATOS DEL PACIENTE SELECCIONADO->");
-			Imprimir("Nombre:\t" + p.getNombre());
+			Imprimir("Nombres:\t" + p.getNombre());
+			Imprimir("Apellidos:\t"+p.getApell());
 			Imprimir("Caso:\t" + p.getCaso());
 			Imprimir("Edad:\t" + p.getEdad());
 			Imprimir("DNI:\t" + p.getDni());
@@ -461,5 +516,29 @@ public class V1 extends JFrame implements ActionListener {
 		
 	}
 	protected void do_mntmNewMenuItem_actionPerformed(ActionEvent e) {
+	Programadores pro= new Programadores();
+	pro.setVisible(true);
+
+		
+	}
+	protected void do_mntmNewMenuItem_1_actionPerformed(ActionEvent e) {
+	Consultorio cons= new Consultorio();
+	cons.setVisible(true);
+		
+		
+		
+		
+	}
+	protected void do_mntmNewMenuItem_2_actionPerformed(ActionEvent e) {
+	Consultorio2 cons2= new Consultorio2();
+	cons2.setVisible(true);
+		
+		
+		
+	}
+	protected void do_mntmNewMenuItem_4_actionPerformed(ActionEvent e) {
+	Consultorio3 cons3= new Consultorio3();
+	cons3.setVisible(true);
+		
 	}
 }
