@@ -57,45 +57,76 @@ public class V1 extends JFrame implements ActionListener {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-	    Map<String, String> usuarios = new HashMap<>();
-	    usuarios.put("FelixBC", "Felix200@");
-	    usuarios.put("JeremyPA", "Jeremy300@");
-	    usuarios.put("SergioMO", "Sergio400@");
-	    usuarios.put("GustavoNQ", "Gustavo500@");
+	public static void main(String[] args) throws IOException {
+		Map<String, String> usuarios = new HashMap<>();
+		usuarios.put("FelixBC", "Felix200@");
+		usuarios.put("JeremyPA", "Jeremy300@");
+		usuarios.put("SergioMO", "Sergio400@");
+		usuarios.put("GustavoNQ", "Gustavo500@");
 
-	    JTextField txtUsuario = new JTextField();
-	    JPasswordField txtContraseña = new JPasswordField();
+		int intentos = 0;
+		int maxIntentos = 3;
+		boolean autenticado = false;
 
-	    JPanel panel = new JPanel(new GridLayout(2, 2, 5, 5));
-	    panel.add(new JLabel("Usuario:"));
-	    panel.add(txtUsuario);
-	    panel.add(new JLabel("Contraseña:"));
-	    panel.add(txtContraseña);
+		BufferedImage imgOriginal = ImageIO.read(V1.class.getResourceAsStream("/imagen/c.png"));
+		int anchoOriginal = imgOriginal.getWidth();
+		int altoOriginal = imgOriginal.getHeight();
+		int anchoDeseado = 450;
+		int altoDeseado = (int) (altoOriginal * ((double) anchoDeseado / anchoOriginal));
+		Image imgEscalada = imgOriginal.getScaledInstance(anchoDeseado, altoDeseado, Image.SCALE_SMOOTH);
+		ImageIcon icono = new ImageIcon(imgEscalada);
+		JLabel lblImagen = new JLabel(icono);
+		lblImagen.setHorizontalAlignment(JLabel.CENTER);
 
-	    int okCancel = JOptionPane.showConfirmDialog(null, panel, "Iniciar sesión",
-	            JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+		while (intentos < maxIntentos && !autenticado) {
+		    JTextField txtUsuario = new JTextField();
+		    JPasswordField txtContraseña = new JPasswordField();
 
-	    if (okCancel != JOptionPane.OK_OPTION) return;
+		    JPanel panelCampos = new JPanel(new GridLayout(2, 2, 5, 5));
+		    panelCampos.add(new JLabel("Usuario:"));
+		    panelCampos.add(txtUsuario);
+		    panelCampos.add(new JLabel("Contraseña:"));
+		    panelCampos.add(txtContraseña);
 
-	    String usuario = txtUsuario.getText();
-	    String contraseña = new String(txtContraseña.getPassword());
+		    JPanel panel = new JPanel(new BorderLayout(5, 5));
+		    panel.add(lblImagen, BorderLayout.NORTH);
+		    panel.add(panelCampos, BorderLayout.CENTER);
 
-	    if (usuarios.containsKey(usuario) && usuarios.get(usuario).equals(contraseña)) {
-	        EventQueue.invokeLater(new Runnable() {
-	            public void run() {
-	                try {
-	                    V1 frame = new V1();
-	                    frame.setVisible(true);
-	                } catch (Exception e) {
-	                    e.printStackTrace();
-	                }
-	            }
-	        });
-	    } else {
-	        JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos");
-	    }
-	}
+		    int okCancel = JOptionPane.showConfirmDialog(null, panel, "Inicio de sesión",
+		            JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+
+		    if (okCancel != JOptionPane.OK_OPTION) return;
+
+		    String usuario = txtUsuario.getText();
+		    String contraseña = new String(txtContraseña.getPassword());
+
+		    if (usuarios.containsKey(usuario) && usuarios.get(usuario).equals(contraseña)) {
+		        autenticado = true;
+		    } else {
+		        intentos++;
+		        int restantes = maxIntentos - intentos;
+		        if (restantes > 0) {
+		            JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos. Te quedan " + restantes + " intento(s).");
+		        } else {
+		            JOptionPane.showMessageDialog(null, "Has superado el número máximo de intentos.");
+		        }
+		    }
+		}
+
+		if (autenticado) {
+		    EventQueue.invokeLater(new Runnable() {
+		        public void run() {
+		            try {
+		                V1 frame = new V1();
+		                frame.setVisible(true);
+		            } catch (Exception e) {
+		                e.printStackTrace();
+		            }
+		        }
+		    });
+		}
+
+		}
 
 	/**
 	 * Create the frame.
