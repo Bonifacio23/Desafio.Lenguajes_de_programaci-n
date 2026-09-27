@@ -4,6 +4,8 @@ import java.awt.EventQueue;
 import java.util.HashMap;
 import java.util.Map;
 import java.awt.GridLayout;
+import java.awt.Image;
+
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -22,10 +24,16 @@ import javax.swing.JOptionPane;
 import java.awt.Font;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.imageio.ImageIO;
 import javax.security.auth.callback.TextOutputCallback;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
 import javax.swing.JMenuBar;
