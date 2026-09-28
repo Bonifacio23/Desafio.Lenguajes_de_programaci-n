@@ -14,11 +14,14 @@ public class Medico extends Persona{
 	public void setEspec(String espec) {
 		this.espec = espec;
 	}
+	
 	public String getConsul() {
 		return consul;
 	}
 	public void setConsul(String consul) {
 		this.consul = consul;
 	}
-
-}
+	@Override
+	public String toString() { return getNombre() + " " + getApell(); }
+	}
+	

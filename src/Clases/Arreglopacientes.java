@@ -8,9 +8,9 @@ public class Arreglopacientes {
 	public Arreglopacientes() {
 		Pacienteslista = new ArrayList<Pacientes>();
 
-		Adicionar(new Pacientes("Sergio Joaquín", "Marcoz Otárola", 17, 72338065, "Gripe", "14/09/2026", "12:20", 15.50));
-		Adicionar(new Pacientes("Fernanda Angela", "Rojas Rodríguez", 16, 72241232, "Tos", "14/09/2026", "14:16", 20));
-		Adicionar(new Pacientes("Jacinto Roberto", "López Aliaga", 23, 32441434, "Asma", "14/09/2026", "22:00", 40.50));
+		Adicionar(new Pacientes("Sergio Joaquín", "Marcoz Otárola", 17, 72338065, "Gripe", "14/09/2026", "12:20", 15.50, "Jorge Fernández Salas", "Medicina General", "Consultorio 101"));
+		Adicionar(new Pacientes("Fernanda Angela", "Rojas Rodríguez", 16, 72241232, "Tos", "14/09/2026", "14:16", 20, "Patricia Ramírez Osorio", "Medicina General", "Consultorio 102"));
+		Adicionar(new Pacientes("Jacinto Roberto", "López Aliaga", 23, 32441434, "Asma", "14/09/2026", "22:00", 40.50, "Miguel Torres Bazán", "Medicina General", "Consultorio 103"));
 	}
 
 	public void Adicionar(Pacientes x) {

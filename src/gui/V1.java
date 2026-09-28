@@ -10,13 +10,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+
 import javax.swing.JFrame;
 import javax.swing.border.EmptyBorder;
 
+import Clases.GestorMedicos;
 import Clases.Arreglopacientes;
+import Clases.Medico;
 import Clases.Pacientes;
 
 import javax.swing.JOptionPane;
@@ -25,7 +25,6 @@ import java.awt.Font;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.imageio.ImageIO;
-import javax.security.auth.callback.TextOutputCallback;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
@@ -34,12 +33,15 @@ import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JComboBox;
+import com.toedter.calendar.JDateChooser;
 public class V1 extends JFrame implements ActionListener {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -47,7 +49,6 @@ public class V1 extends JFrame implements ActionListener {
 	private JLabel lblNombre;
 	private JLabel lblNombre_2;
 	private JLabel lblEdad;
-	private JLabel lblHora;	
 	private JLabel lblDni_1;
 	private JLabel lblDia;
 	private JLabel lblPago;
@@ -56,7 +57,7 @@ public class V1 extends JFrame implements ActionListener {
 	private JTextField txtEdad;
 	private JTextField txtDni;
 	private JTextField txtDía;
-	private JTextField txtHora;
+	private JDateChooser dateChooser;
 	private JTextField txtPago;
 	private JScrollPane scrollPane;
 	private JTextArea txtS;
@@ -204,22 +205,16 @@ public class V1 extends JFrame implements ActionListener {
 			contentPane.add(lblEdad);
 		}
 		{
-			lblHora = new JLabel("Hora:");
-			lblHora.setFont(new Font("Verdana", Font.BOLD, 14));
-			lblHora.setBounds(172, 174, 82, 14);
-			contentPane.add(lblHora);
-		}
-		{
 			lblDni_1 = new JLabel("DNI:");
 			lblDni_1.setFont(new Font("Verdana", Font.BOLD, 14));
 			lblDni_1.setBounds(169, 78, 45, 14);
 			contentPane.add(lblDni_1);
 		}
 		{
-			lblDia = new JLabel("Día:");
-			lblDia.setFont(new Font("Verdana", Font.BOLD, 14));
-			lblDia.setBounds(850, 128, 82, 14);
-			contentPane.add(lblDia);
+			dateChooser = new JDateChooser();
+			dateChooser.setBounds(896, 127, 192, 20);
+			dateChooser.setDateFormatString("dd/MM/yyyy");
+			contentPane.add(dateChooser);
 		}
 		{
 			lblPago = new JLabel("Pago:");
@@ -253,15 +248,9 @@ public class V1 extends JFrame implements ActionListener {
 		}
 		{
 			txtDía = new JTextField();
-			txtDía.setBounds(896, 127, 192, 18);
+			txtDía.setBounds(896, 127, 192, 20);
 			contentPane.add(txtDía);
 			txtDía.setColumns(10);
-		}
-		{
-			txtHora = new JTextField();
-			txtHora.setBounds(227, 173, 125, 20);
-			contentPane.add(txtHora);
-			txtHora.setColumns(10);
 		}
 		{
 			txtPago = new JTextField();
@@ -324,9 +313,37 @@ public class V1 extends JFrame implements ActionListener {
 		{
 			txtApell = new JTextField();
 			txtApell.setColumns(10);
-			txtApell.setBounds(503, 75, 259, 20);
+			txtApell.setBounds(506, 77, 259, 20);
 			contentPane.add(txtApell);
 		}
+		{
+			lblNewLabel_1 = new JLabel("Médico:");
+			lblNewLabel_1.setFont(new Font("Verdana", Font.BOLD, 14));
+			lblNewLabel_1.setBounds(820, 177, 66, 16);
+			contentPane.add(lblNewLabel_1);
+		}
+		{
+			ComMed = new JComboBox<Medico>();
+			ComMed.setBounds(896, 171, 227, 25);
+			contentPane.add(ComMed);
+			{
+				lblNewLabel_2 = new JLabel("Día");
+				lblNewLabel_2.setFont(new Font("Verdana", Font.BOLD, 14));
+				lblNewLabel_2.setBounds(842, 128, 44, 20);
+				contentPane.add(lblNewLabel_2);
+			}
+			ComMed.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					Medico elegido = (Medico) ComMed.getSelectedItem();
+					if (elegido != null) {
+					System.out.println(elegido.getNombre() + " - " + elegido.getEspec() + " - " + elegido.getConsul());
+					
+				}
+				}
+			});
+			cargarMedicos();
+			}
+		
          Listado();
 		
 	}
@@ -369,6 +386,9 @@ public class V1 extends JFrame implements ActionListener {
 	private JTextField txtApell;
 	private JMenuItem mntmNewMenuItem_2;
 	private JMenuItem mntmNewMenuItem_4;
+	private JLabel lblNewLabel_1;
+	private JComboBox<Medico>ComMed;
+	private JLabel lblNewLabel_2;
 	protected void do_btnNewButton_actionPerformed(ActionEvent e) {
 		txtS.setText("");
 		Listado();
@@ -440,19 +460,13 @@ public class V1 extends JFrame implements ActionListener {
 		    return;
 		}
 
-		String diaTexto = txtDía.getText().trim();
-		if (!diaTexto.matches("\\d{1,2}/\\d{1,2}/\\d{4}")) {
-		    JOptionPane.showMessageDialog(this, "El día debe tener el formato dd/mm/aaaa, ejemplo: 12/12/2026.");
-		    return;
-		}
-		String dia = diaTexto;
-
-		String horaTexto = txtHora.getText().trim();
-		if (!horaTexto.matches("([01]\\d|2[0-3]):[0-5]\\d")){
-			JOptionPane.showMessageDialog(this,"La hora debe tener el formato HH:MM, ejemplo: 12:20." );
+		if (dateChooser.getDate() == null) {
+			JOptionPane.showMessageDialog(this, "Debe seleccionar el día de la cita.");
 			return;
-		}
-		String hora = horaTexto;
+			}
+			String dia = new java.text.SimpleDateFormat("dd/MM/yyyy").format(dateChooser.getDate());
+
+			String hora = LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm"));
 
 		String pagoTexto = txtPago.getText().trim().replace("S/", "").replace("S/.", "").trim();
 		if (!pagoTexto.matches("\\d+(\\.\\d+)?")) {
@@ -461,8 +475,16 @@ public class V1 extends JFrame implements ActionListener {
 		}
 		double pago = Double.parseDouble(pagoTexto);
 		
+		Medico medicoElegido = (Medico) ComMed.getSelectedItem();
+		if (medicoElegido == null) {
+		JOptionPane.showMessageDialog(this, "Debe seleccionar un médico.");
+		return;
+		}
 		
-		Pacientes pac = new Pacientes(nomb, apell, edad, dni, caso, dia, hora, pago);
+		Pacientes pac = new Pacientes(nomb, apell, edad, dni, caso, dia, hora, pago,
+				medicoElegido.getNombre() + " " + medicoElegido.getApell(),
+				medicoElegido.getEspec(),
+				medicoElegido.getConsul());
 		
 		aps.Adicionar(pac);
 		Listado();
@@ -470,25 +492,33 @@ public class V1 extends JFrame implements ActionListener {
 		txtNomb.setText("");
 		txtApell.setText("");
 		txtCaso.setText("");
+		
 		txtEdad.setText("");
 		txtDni.setText("");
 		txtDía.setText("");
-		txtHora.setText("");
+		
 		txtPago.setText("");
 		txtNomb.requestFocus();
 	
 		
 	}
+	private void cargarMedicos() {
+		for (Medico m : GestorMedicos.medicos) {
+		ComMed.addItem(m);
+		}
+		}
 	
 	void Listado() {
 		txtS.setText("");
-		Imprimir("================================================================================================================================================================================");
-		Imprimir(String.format("%-5s %-30s %-30s %-42s %-6s %-12s %-12s %-8s %-8s","N°","Nombres","Apellidos","Caso","Edad","DNI","Día","Hora","Pago"));
-		Imprimir("--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+		Imprimir("====================================================================================================================================================================================================================");
+		Imprimir(String.format("%-5s %-30s %-30s %-20s %-35s %-18s %-15s %-10s %-12s %-12s %-8s %-8s",
+				"N°","Nombres","Apellidos","Caso","Médico","Especialidad","Consultorio","Edad","DNI","Día","Hora","Pago"));
+		Imprimir("-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
 		for (int i =0;i<aps.Tamaño();i++) {
-			Pacientes x=aps.Obtener(i);
-			String orden=aps.Registro(i);
-			Imprimir(String.format("%-5s %-30s %-30s %-42s %-6d %-12d %-12s %-8s S/%.2f", orden, x.getNombre(),x.getApell(), x.getCaso(), x.getEdad(), x.getDni(), x.getDía(), x.getHora(), x.getPago()));
+		Pacientes x=aps.Obtener(i);
+		String orden=aps.Registro(i);
+		Imprimir(String.format("%-5s %-30s %-30s %-20s %-35s %-18s %-15s %-10d %-12d %-12s %-8s S/%.2f",
+				orden, x.getNombre(), x.getApell(), x.getCaso(), x.getMedico(), x.getEspec(), x.getConsul(), x.getEdad(), x.getDni(), x.getDía(), x.getHora(), x.getPago()));
 			
 		}
 	}
