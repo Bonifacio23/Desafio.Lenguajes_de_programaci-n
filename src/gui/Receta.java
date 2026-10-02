@@ -137,6 +137,9 @@ public class Receta extends JFrame {
 		txtScaso.setBounds(71, 269, 542, 22);
 		contentPane.add(txtScaso);
 		
+		
+		
+		
 		JLabel lblCaso = new JLabel("Caso:");
 		lblCaso.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblCaso.setBounds(22, 268, 67, 25);
@@ -182,8 +185,10 @@ public class Receta extends JFrame {
 		scrollPane.setBounds(22, 326, 578, 84);
 		contentPane.add(scrollPane);
 		
-		JTextArea txtRec = new JTextArea();
-		scrollPane.setViewportView(txtRec);
+		txtRecet = new JTextArea();
+		txtRecet.setLineWrap(true);
+		txtRecet.setWrapStyleWord(true);
+		scrollPane.setViewportView(txtRecet);
 		
 		JButton btnVolver = new JButton("Volver");
 		btnVolver.addActionListener(new ActionListener() {

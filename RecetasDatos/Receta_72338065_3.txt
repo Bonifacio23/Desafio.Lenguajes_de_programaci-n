@@ -1,0 +1,15 @@
+==================================================
+               RECETA MÉDICA                      
+==================================================
+FECHA / HORA:  14/09/2026 12:20
+DNI:           72338065
+PACIENTE:      Sergio Joaquín Marcoz Otárola
+EDAD:          17 años
+CASO / MOTIVO: Gripe
+MÉDICO:        Jorge Fernández Salas
+PAGO:          S/. 15.5
+--------------------------------------------------
+INDICACIONES / MEDICAMENTOS:
+paracetamol
+mitrozol
+==================================================
