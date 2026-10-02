@@ -1,6 +1,6 @@
 <div align="center">
 
-![Header](https://capsule-render.vercel.app/api?type=waving&color=0:2E9CCA,100:1B6FA8&height=300&section=header&text=Sistema%20de%20Registro%20de%20Citas%20Para%20un%20Establecimiento%20de%20Salud&fontSize=32&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=Centro%20de%20Salud%20%22Bre%C3%B1a%22&descAlignY=58&descSize=18)
+![Header](https://capsule-render.vercel.app/api?type=waving&color=0:2E9CCA,200:1B6FA8&height=180&section=header&text=Sistema%20de%20Registro%20de%20Citas%20Para%20un%20Establecimiento%20de%20Salud&fontSize=32&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=Centro%20de%20Salud%20%22Bre%C3%B1a%22&descAlignY=58&descSize=18)
 
 [![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&size=20&pause=1000&color=2E9CCA&center=true&vCenter=true&width=600&lines=Proyecto+del+curso+Lenguajes+de+Programaci%C3%B3n;Java+%2B+Swing+%7C+Registro+de+Pacientes;Validaciones+con+expresiones+regulares)](https://git.io/typing-svg)
 
