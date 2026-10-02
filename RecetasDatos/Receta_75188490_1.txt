@@ -1,0 +1,14 @@
+==================================================
+               RECETA MÉDICA                      
+==================================================
+FECHA / HORA:  14/10/2026 00:34
+DNI:           75188490
+PACIENTE:      Bonifacio Felix
+EDAD:          23 años
+CASO / MOTIVO: Gripe
+MÉDICO:        Jorge Fernández Salas
+PAGO:          S/. 23.0
+--------------------------------------------------
+INDICACIONES / MEDICAMENTOS:
+paracetamol
+==================================================

@@ -7,6 +7,7 @@ public class Pacientes extends Persona{
 	private String medico;
 	private String espec;
 	private String consul;
+	private boolean atendido = false;
 	public Pacientes(String nomb, String apell, int edad, int dni, String caso, String día, String hora, double pago,
 			String medico, String espec, String consul) {
 		super(nomb, apell, edad, dni);
@@ -17,6 +18,13 @@ public class Pacientes extends Persona{
 		this.medico = medico;
 		this.espec = espec;
 		this.consul = consul;
+	}
+	public boolean isAtendido() {
+	    return atendido;
+	}
+
+	public void setAtendido(boolean atendido) {
+	    this.atendido = atendido;
 	}
 	public String getCaso() {
 		return caso;

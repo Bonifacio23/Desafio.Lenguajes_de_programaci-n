@@ -1,23 +1,8 @@
 package gui;
 
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-
-import javax.swing.JButton;
 import javax.swing.JDialog;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
-import javax.swing.JSplitPane;
-import javax.swing.JToolBar;
-import javax.swing.JInternalFrame;
-import javax.swing.JSpinner;
-import javax.swing.JToggleButton;
-import javax.swing.JPasswordField;
-import javax.swing.JScrollBar;
-import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 
 public class Consultorio3 extends JDialog {
