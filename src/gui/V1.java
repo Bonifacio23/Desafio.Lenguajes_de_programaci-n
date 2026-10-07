@@ -614,13 +614,12 @@ import Clases.Pacientes;
 		void Listado() {
 			txtS.setText("");
 			Imprimir("===============================================================================================================================================================================================================================================");
-			Imprimir(String.format("%-5s %-35s %-25s %-30s %-35s %-18s %-29s %-12s %-12s %-12s %-8s %-8s","N°","Nombres","Apellidos","Caso","Médico","Especialidad","Consultorio","Edad","DNI","Día","Hora","Pago"));
+			Imprimir(String.format("%-5s %-12s %-35s %-25s %-30s %-35s %-18s %-29s %-12s %-12s %-8s %-8s","N°","DNI","Nombres","Apellidos","Caso","Médico","Especialidad","Consultorio","Edad","Día","Hora","Pago"));
 			Imprimir("-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
 			for (int i =0;i<aps.Tamaño();i++) {
 			Pacientes x=aps.Obtener(i);
-			if (x.isAtendido()) continue;
 			String orden=aps.Registro(i);
-			Imprimir(String.format("%-5s %-30s %-30s %-30s %-35s %-18s %-30s %-10d %-12d %-12s %-8s S/%.2f", orden, x.getNombre(), x.getApell(), x.getCaso(), x.getMedico(), x.getEspec(), x.getConsul(), x.getEdad(), x.getDni(), x.getDía(), x.getHora(), x.getPago()));
+			Imprimir(String.format("%-5s %-12d %-30s %-30s %-30s %-35s %-18s %-30s %-10d %-12s %-8s S/%.2f", orden, x.getDni(), x.getNombre(), x.getApell(), x.getCaso(), x.getMedico(), x.getEspec(), x.getConsul(), x.getEdad(), x.getDía(), x.getHora(), x.getPago()));
 				
 			}
 		}
@@ -781,7 +780,7 @@ import Clases.Pacientes;
 			    }
 			    
 			    this.setVisible(false);
-			    Receta ventanaReceta = new Receta(this, pacienteEncontrado, medicoSeleccionado);
+			    Receta ventanaReceta = new Receta(this, pacienteEncontrado, medicoSeleccionado,numOrden);
 			    ventanaReceta.setVisible(true);
 		}
 		
