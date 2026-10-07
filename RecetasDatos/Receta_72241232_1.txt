@@ -1,0 +1,14 @@
+==================================================
+               RECETA MÉDICA                      
+==================================================
+FECHA / HORA:  14/09/2026 14:16
+DNI:           72241232
+PACIENTE:      Fernanda Angela Rojas Rodríguez
+EDAD:          16 años
+CASO / MOTIVO: Tos
+MÉDICO:        Jorge Fernández Salas
+PAGO:          S/. 20.0
+--------------------------------------------------
+INDICACIONES / MEDICAMENTOS:
+paracetamol
+==================================================

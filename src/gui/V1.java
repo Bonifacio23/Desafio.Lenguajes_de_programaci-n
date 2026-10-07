@@ -466,17 +466,15 @@ import Clases.Pacientes;
 		private JLabel lblEstadoDni;
 		private JButton btnModificar;
 		protected void do_btnNewButton_actionPerformed(ActionEvent e) {
-			txtS.setText("");
-			Listado();
-			Imprimir("Cantidad de Pacientes: "+aps.Tamaño());
-			Imprimir("El promedio de Edades es:"+aps.PromedioEdad());
-			Imprimir("El Ingreso total es: "+aps.IngresosTotales());
-		
-			
-	
-			
-	
-			
+		    Listado();
+		    JOptionPane.showMessageDialog(
+		        this,
+		        "Cantidad de Pacientes: " + aps.Tamaño() + "\n" +
+		        "El promedio de Edades es: " + String.format("%.2f", aps.PromedioEdad()) + "\n" +
+		        "El Ingreso total es: S/" + String.format("%.2f", aps.IngresosTotales()),
+		        "Reporte",
+		        JOptionPane.INFORMATION_MESSAGE
+		    );
 		}
 		protected void do_btnAñadir_actionPerformed(ActionEvent e) {
 			String dniTexto = txtDni.getText().trim();
@@ -672,47 +670,44 @@ import Clases.Pacientes;
 	
 		
 		protected void do_btnBuscar_actionPerformed(ActionEvent e) {
-			String dniTexto = txtDni.getText().trim();
-			
+		    String dniTexto = txtDni.getText().trim();
+
 		    if (!dniTexto.matches("\\d{8}")) {
 		        JOptionPane.showMessageDialog(this, "El DNI debe tener exactamente 8 dígitos numéricos.");
 		        return;
 		    }
-		    
+
 		    int dni = Integer.parseInt(dniTexto);
 		    boolean encontrado = false;
 
-		    txtS.setText("");
+		    modelo.setRowCount(0);
 		    for (int i = 0; i < aps.Tamaño(); i++) {
 		        Pacientes p = aps.Obtener(i);
 		        if (p.getDni() == dni) {
-		            if (!encontrado) {
-		                Imprimir("================================================================================================");
-		                Imprimir("\t\t<- HISTORIAL DE CITAS ENCONTRADAS PARA EL DNI: " + dni + " ->");
-		                encontrado = true;
-		            }
-
-		            Imprimir("------------------------------------------------------------------------------------------------");
-		            Imprimir("N° DE ORDEN: " + aps.Registro(i));
-		            Imprimir("Nombres:\t" + p.getNombre() + " " + p.getApell());
-		            Imprimir("Caso:\t\t" + p.getCaso());
-		            Imprimir("Edad:\t\t" + p.getEdad());
-		            Imprimir("Día / Hora:\t" + p.getDía() + " - " + p.getHora());
-		            Imprimir("Médico:\t\t" + p.getMedico() + " (" + p.getEspec() + ")");
-		            Imprimir("Consultorio:\t" + p.getConsul());
-		            Imprimir("Pago:\t\tS/." + String.format("%.2f", p.getPago()));
+		            encontrado = true;
+		            modelo.addRow(new Object[] {
+		                aps.Registro(i),
+		                p.getDni(),
+		                p.getNombre(),
+		                p.getApell(),
+		                p.getCaso(),
+		                p.getMedico(),
+		                p.getEspec(),
+		                p.getConsul(),
+		                p.getEdad(),
+		                p.getDía(),
+		                p.getHora(),
+		                String.format("S/%.2f", p.getPago())
+		            });
 		        }
 		    }
 
 		    if (!encontrado) {
+		        Listado();
 		        JOptionPane.showMessageDialog(this, "El paciente con DNI (" + dni + ") no tiene citas registradas.");
 		    } else {
-		        Imprimir("================================================================================================");
+		        AjustarColumnas();
 		    }
-			
-			
-			
-			
 		}
 		protected void do_btnEliminar_actionPerformed(ActionEvent e) {
 		    String numOrden = JOptionPane.showInputDialog(
