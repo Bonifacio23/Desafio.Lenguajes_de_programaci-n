@@ -1,0 +1,14 @@
+==================================================
+               RECETA MÉDICA                      
+==================================================
+FECHA / HORA:  15/10/2026 23:18
+DNI:           75188490
+PACIENTE:      Felix Bonifacio
+EDAD:          23 años
+CASO / MOTIVO: Cancer de ano fase terminal
+MÉDICO:        Jorge Fernández Salas
+PAGO:          S/. 12.0
+--------------------------------------------------
+INDICACIONES / MEDICAMENTOS:
+paracetamol
+==================================================

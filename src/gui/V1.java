@@ -14,6 +14,11 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
+import java.awt.Component;
+import javax.swing.JTable;
+import javax.swing.JScrollPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -58,6 +63,9 @@ import Clases.Pacientes;
 		private JTextArea txtS;
 		private JButton btnReportar;
 		public static V1 instancia;
+		private JTable tabla;
+		private DefaultTableModel modelo;
+		
 	
 		/**
 		 * Launch the application.
@@ -260,12 +268,24 @@ import Clases.Pacientes;
 				scrollPane = new JScrollPane();
 				scrollPane.setBounds(27, 256, 1126, 247);
 				contentPane.add(scrollPane);
-				{
-					txtS = new JTextArea();
-					txtS.setEditable(false);
-					txtS.setFont(new Font("Monospaced", Font.PLAIN, 12));
-					scrollPane.setViewportView(txtS);
-				}
+
+				modelo = new DefaultTableModel(
+				    new String[] {"N°", "DNI", "Nombres", "Apellidos", "Caso", "Médico", "Especialidad", "Consultorio", "Edad", "Día", "Hora", "Pago"}, 0) {
+				    @Override
+				    public boolean isCellEditable(int fila, int columna) {
+				        return false;
+				    }
+				};
+
+				tabla = new JTable(modelo) {
+				    @Override
+				    public boolean getScrollableTracksViewportWidth() {
+				        return getPreferredSize().width < getParent().getWidth();
+				    }
+				};
+				tabla.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+				tabla.getTableHeader().setReorderingAllowed(false);
+				scrollPane.setViewportView(tabla);
 			}
 			{
 				btnReportar = new JButton("Reportar");
@@ -612,16 +632,38 @@ import Clases.Pacientes;
 			}
 		
 		void Listado() {
-			txtS.setText("");
-			Imprimir("===============================================================================================================================================================================================================================================");
-			Imprimir(String.format("%-5s %-12s %-35s %-25s %-30s %-35s %-18s %-29s %-12s %-12s %-8s %-8s","N°","DNI","Nombres","Apellidos","Caso","Médico","Especialidad","Consultorio","Edad","Día","Hora","Pago"));
-			Imprimir("-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
-			for (int i =0;i<aps.Tamaño();i++) {
-			Pacientes x=aps.Obtener(i);
-			String orden=aps.Registro(i);
-			Imprimir(String.format("%-5s %-12d %-30s %-30s %-30s %-35s %-18s %-30s %-10d %-12s %-8s S/%.2f", orden, x.getDni(), x.getNombre(), x.getApell(), x.getCaso(), x.getMedico(), x.getEspec(), x.getConsul(), x.getEdad(), x.getDía(), x.getHora(), x.getPago()));
-				
-			}
+		    modelo.setRowCount(0);
+		    for (int i = 0; i < aps.Tamaño(); i++) {
+		        Pacientes x = aps.Obtener(i);
+		        modelo.addRow(new Object[] {
+		            aps.Registro(i),
+		            x.getDni(),
+		            x.getNombre(),
+		            x.getApell(),
+		            x.getCaso(),
+		            x.getMedico(),
+		            x.getEspec(),
+		            x.getConsul(),
+		            x.getEdad(),
+		            x.getDía(),
+		            x.getHora(),
+		            String.format("S/%.2f", x.getPago())
+		        });
+		    }
+		    AjustarColumnas();
+		}
+		void AjustarColumnas() {
+		    for (int c = 0; c < tabla.getColumnCount(); c++) {
+		        TableColumn col = tabla.getColumnModel().getColumn(c);
+		        Component comp = tabla.getTableHeader().getDefaultRenderer().getTableCellRendererComponent(tabla, col.getHeaderValue(), false, false, -1, c);
+		        int ancho = comp.getPreferredSize().width;
+		        for (int f = 0; f < tabla.getRowCount(); f++) {
+		            comp = tabla.prepareRenderer(tabla.getCellRenderer(f, c), f, c);
+		            ancho = Math.max(ancho, comp.getPreferredSize().width);
+		        }
+		        col.setPreferredWidth(ancho + 16);
+		        col.setWidth(ancho + 16);
+		    }
 		}
 	
 		void Imprimir(String s) {
